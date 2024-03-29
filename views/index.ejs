@@ -1,0 +1,19 @@
+<%- include ./partials/header %>
+    <form action="/search" method="get">
+      <input type="text" name="query">
+      <button type="submit">Search candidate</button>
+    </form>
+    <br>
+    <% for(var i = 0; i < candidates.length; i++) { %>
+      <p><%- candidates[i].candidate_name %>, <%- candidates[i].cv_score %></p>
+      <!--<p>Candidate name: <%- candidates[i].candidate_name %></p>
+      <p>CV score: <%- candidates[i].cv_score %></p>-->
+      <form action="/delete" method="get">
+        <input type="hidden" name="candidate_id" value="<%= candidates[i].candidate_id %>">
+        <button type="submit">Delete candidate</button>
+      </form>
+      <br>
+      <br>
+    <% } %>
+    <a href="/add">Add candidate</a>
+<%- include ./partials/footer %> 

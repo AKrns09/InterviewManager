@@ -1,0 +1,9 @@
+cd /Users/owner/Desktop/interview-manager
+express --view=ejs interview-manager
+npm install
+npm install sync-mysql
+npm start
+
+# kill existing node instance
+ps aux | grep "node ./bin"
+kill -9 7569 # from output above
