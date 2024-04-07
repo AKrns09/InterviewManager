@@ -12,7 +12,6 @@ router.get('/', function(req, res, next) {
   })
   var candidates = connection.query("select * from candidates;");
   res.render('index', { title: 'interview candidates', candidates:candidates, page_header: '', link: '' });
-  /*res.render('index', { title: 'Express', candidates:candidates });*/
 });
 
 router.get('/search', function(req, res, next) {
@@ -24,8 +23,7 @@ router.get('/search', function(req, res, next) {
     })
     var query = req.query.query
     query = "%" + query  + "%"
-    var candidates = connection.query('select * from candidates where candidate_name like (?);', [query]);
-    //res.render('index', {title: 'Search Results', page_header: 'Search Results', link: '/', link_name: "Candidates"})
+    var candidates = connection.query('select * from candidates where candidate_id = ?', [query]);
     res.render('index', {title: 'Search Results', candidates: candidates, page_header: 'Search Results', link: '/', link_name: "Searched candidate"})
 });
 

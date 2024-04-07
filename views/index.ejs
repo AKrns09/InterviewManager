@@ -1,13 +1,14 @@
 <%- include ./partials/header %>
     <form action="/search" method="get">
       <input type="text" name="query">
-      <button type="submit">Search candidate</button>
+      <button type="submit">Search candidate by candidate ID</button>
     </form>
     <br>
     <% for(var i = 0; i < candidates.length; i++) { %>
-      <p><%- candidates[i].candidate_name %>, <%- candidates[i].cv_score %></p>
-      <!--<p>Candidate name: <%- candidates[i].candidate_name %></p>
-      <p>CV score: <%- candidates[i].cv_score %></p>-->
+      <p>Candidate ID: <%- candidates[i].candidate_id %></p>
+      <p>Candidate name: <%= candidates[i].candidate_name %></p>
+      <p>CV score: <%= candidates[i].cv_score %></p>
+      <p>Interviewer: <%= candidates[i].interviewer %></p>
       <form action="/delete" method="get">
         <input type="hidden" name="candidate_id" value="<%= candidates[i].candidate_id %>">
         <button type="submit">Delete candidate</button>
@@ -16,4 +17,3 @@
       <br>
     <% } %>
     <a href="/add">Add candidate</a>
-<%- include ./partials/footer %> 
